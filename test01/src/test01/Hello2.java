@@ -7,5 +7,6 @@ public class Hello2 {
     System.out.println("Hellod");
     System.out.println("Hellod");
     System.out.println("Hellod");
+    System.out.println("된건ㄱ가?");
   }
 }
