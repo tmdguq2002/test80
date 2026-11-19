@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>발표자료 표지</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0b1f3a;
+    --blue: #1d5fd1;
+    --sky: #4fb3ff;
+    --green: #2bb673;
+    --ink: #13213a;
+    --muted: #5b6b82;
+    --paper: #f6f8fb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 100%; height: 100%; background: #0a0f1a; overflow: hidden; }
+  body {
+    font-family: "Noto Sans KR", "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* 16:9 무대 — 1920x1080 기준으로 화면에 맞게 축소/확대 */
+  #stage {
+    position: relative; width: 1920px; height: 1080px;
+    transform-origin: center center; flex: none;
+    box-shadow: 0 30px 80px rgba(0,0,0,.45);
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    opacity: 0; visibility: hidden;
+    transition: opacity .6s ease, visibility .6s ease;
+  }
+  .slide.active { opacity: 1; visibility: visible; }
+  .slide.active .reveal { animation: rise .9s cubic-bezier(.2,.7,.2,1) both; }
+  .slide.active .reveal.d1 { animation-delay: .1s; }
+  .slide.active .reveal.d2 { animation-delay: .25s; }
+  .slide.active .reveal.d3 { animation-delay: .4s; }
+  @keyframes rise { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- 1장: 멘토링 발표회 ---------- */
+  .s1 { background: var(--paper); color: var(--ink); }
+  .s1 .band {
+    position: absolute; top: 0; right: 0; width: 760px; height: 100%;
+    background: linear-gradient(160deg, var(--blue) 0%, var(--navy) 100%);
+    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .s1 .band::after {
+    content: ""; position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 70% 30%, rgba(79,179,255,.45) 0, transparent 40%),
+      radial-gradient(circle at 40% 85%, rgba(43,182,115,.35) 0, transparent 38%);
+  }
+  .s1 .ring {
+    position: absolute; border-radius: 50%; border: 3px solid rgba(255,255,255,.25);
+  }
+  .s1 .ring.r1 { width: 520px; height: 520px; right: 60px; top: 160px; }
+  .s1 .ring.r2 { width: 300px; height: 300px; right: 170px; top: 270px; border-color: rgba(255,255,255,.4); }
+  .s1 .ring.r3 { width: 90px; height: 90px; right: 275px; top: 375px; background: var(--green); border: none; }
+  .s1 .content { position: absolute; left: 150px; top: 0; bottom: 0; width: 1100px;
+    display: flex; flex-direction: column; justify-content: center; }
+  .s1 .tag {
+    display: inline-flex; align-items: center; gap: 14px; align-self: flex-start;
+    font-size: 30px; font-weight: 500; color: var(--blue); letter-spacing: .02em;
+    padding: 12px 28px; border: 2px solid var(--blue); border-radius: 999px; margin-bottom: 56px;
+  }
+  .s1 .tag i { width: 12px; height: 12px; border-radius: 50%; background: var(--green); display: block; }
+  .s1 .year { font-size: 64px; font-weight: 300; color: var(--muted); letter-spacing: .08em; margin-bottom: 8px; }
+  .s1 h1 { font-size: 132px; font-weight: 900; line-height: 1.12; letter-spacing: -.03em; }
+  .s1 h1 em { font-style: normal; color: var(--blue); }
+  .s1 .rule { width: 160px; height: 10px; background: var(--green); margin: 64px 0 40px; border-radius: 5px; }
+  .s1 .org { font-size: 40px; font-weight: 700; color: var(--navy); letter-spacing: .04em; }
+
+  /* ---------- 2장: AI빅데이터 TF 회의 ---------- */
+  .s2 { background: radial-gradient(ellipse at 75% 40%, #12305e 0%, #071226 55%, #040a16 100%); color: #fff; }
+  .s2 .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(79,179,255,.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,179,255,.08) 1px, transparent 1px);
+    background-size: 80px 80px;
+    mask-image: radial-gradient(ellipse at 70% 45%, #000 0%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at 70% 45%, #000 0%, transparent 70%);
+  }
+  .s2 svg.net { position: absolute; right: 80px; top: 120px; width: 820px; height: 820px; }
+  .s2 .content { position: absolute; left: 150px; top: 0; bottom: 0; width: 1150px;
+    display: flex; flex-direction: column; justify-content: center; }
+  .s2 .label {
+    font-size: 30px; font-weight: 500; color: var(--sky); letter-spacing: .3em; margin-bottom: 48px;
+    display: flex; align-items: center; gap: 22px;
+  }
+  .s2 .label::before { content: ""; width: 70px; height: 3px; background: var(--sky); }
+  .s2 .year { font-size: 64px; font-weight: 300; color: rgba(255,255,255,.6); letter-spacing: .08em; margin-bottom: 8px; }
+  .s2 h1 { font-size: 136px; font-weight: 900; line-height: 1.1; letter-spacing: -.03em; }
+  .s2 h1 .grad {
+    background: linear-gradient(90deg, #4fb3ff, #7ef0c4);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .s2 .chips { display: flex; gap: 18px; margin-top: 64px; }
+  .s2 .chips span {
+    font-size: 28px; font-weight: 500; padding: 12px 28px; border-radius: 10px;
+    background: rgba(79,179,255,.12); border: 1px solid rgba(79,179,255,.4); color: #cfe8ff;
+  }
+  .s2 .org { position: absolute; left: 150px; bottom: 90px; font-size: 34px; font-weight: 700;
+    letter-spacing: .06em; color: rgba(255,255,255,.85); }
+
+  .s2 .pulse { animation: pulse 2.6s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes pulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+
+  /* ---------- 네비게이션 ---------- */
+  .nav {
+    position: fixed; top: 50%; transform: translateY(-50%);
+    width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
+    background: rgba(255,255,255,.14); color: #fff; backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, opacity .2s; z-index: 10;
+  }
+  .nav:hover { background: rgba(255,255,255,.3); }
+  .nav:disabled { opacity: .25; cursor: default; }
+  .nav svg { width: 26px; height: 26px; }
+  #prev { left: 16px; }
+  #next { right: 16px; }
+  #counter {
+    position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,.75); font-size: 14px; letter-spacing: .1em; z-index: 10;
+    background: rgba(0,0,0,.35); padding: 6px 14px; border-radius: 999px;
+  }
+  @media print {
+    .nav, #counter { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <!-- 1장 -->
+  <section class="slide s1 active" aria-label="2026 안양도시공사 멘토링 발표회">
+    <div class="band"></div>
+    <div class="ring r1"></div>
+    <div class="ring r2"></div>
+    <div class="ring r3"></div>
+    <div class="content">
+      <div class="tag reveal"><i></i>MENTORING PRESENTATION</div>
+      <div class="year reveal d1">2026</div>
+      <h1 class="reveal d2">안양도시공사<br><em>멘토링 발표회</em></h1>
+      <div class="rule reveal d3"></div>
+      <div class="org reveal d3">ANYANG URBAN CORPORATION</div>
+    </div>
+  </section>
+
+  <!-- 2장 -->
+  <section class="slide s2" aria-label="2026 AI빅데이터 TF 회의">
+    <div class="grid"></div>
+    <svg class="net" viewBox="0 0 820 820" aria-hidden="true">
+      <g stroke="rgba(79,179,255,.45)" stroke-width="2" fill="none">
+        <circle cx="410" cy="410" r="300" stroke-dasharray="4 10"/>
+        <circle cx="410" cy="410" r="190" stroke="rgba(126,240,196,.35)"/>
+        <line x1="410" y1="410" x2="410" y2="110"/>
+        <line x1="410" y1="410" x2="670" y2="260"/>
+        <line x1="410" y1="410" x2="670" y2="560"/>
+        <line x1="410" y1="410" x2="410" y2="710"/>
+        <line x1="410" y1="410" x2="150" y2="560"/>
+        <line x1="410" y1="410" x2="150" y2="260"/>
+        <polyline points="410,110 670,260 670,560 410,710 150,560 150,260 410,110" stroke="rgba(79,179,255,.25)"/>
+        <line x1="410" y1="220" x2="574" y2="505" stroke="rgba(126,240,196,.3)"/>
+        <line x1="574" y1="315" x2="246" y2="505" stroke="rgba(126,240,196,.3)"/>
+        <line x1="246" y1="315" x2="410" y2="600" stroke="rgba(126,240,196,.3)"/>
+      </g>
+      <g fill="#4fb3ff">
+        <circle class="pulse" cx="410" cy="110" r="12"/>
+        <circle class="pulse" cx="670" cy="260" r="10" style="animation-delay:.4s"/>
+        <circle class="pulse" cx="670" cy="560" r="12" style="animation-delay:.8s"/>
+        <circle class="pulse" cx="410" cy="710" r="10" style="animation-delay:1.2s"/>
+        <circle class="pulse" cx="150" cy="560" r="12" style="animation-delay:1.6s"/>
+        <circle class="pulse" cx="150" cy="260" r="10" style="animation-delay:2s"/>
+      </g>
+      <g fill="#7ef0c4">
+        <circle cx="410" cy="220" r="8"/><circle cx="574" cy="315" r="8"/><circle cx="574" cy="505" r="8"/>
+        <circle cx="410" cy="600" r="8"/><circle cx="246" cy="505" r="8"/><circle cx="246" cy="315" r="8"/>
+      </g>
+      <circle cx="410" cy="410" r="62" fill="#0b1f3a" stroke="#4fb3ff" stroke-width="3"/>
+      <text x="410" y="425" text-anchor="middle" fill="#fff" font-size="44" font-weight="900" font-family="Noto Sans KR, sans-serif">AI</text>
+    </svg>
+    <div class="content">
+      <div class="label reveal">TASK FORCE MEETING</div>
+      <div class="year reveal d1">2026</div>
+      <h1 class="reveal d2"><span class="grad">AI빅데이터</span><br>TF 회의</h1>
+      <div class="chips reveal d3"><span>Artificial Intelligence</span><span>Big Data</span></div>
+    </div>
+    <div class="org reveal d3">안양도시공사</div>
+  </section>
+</div>
+
+<button class="nav" id="prev" aria-label="이전 장">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+</button>
+<button class="nav" id="next" aria-label="다음 장">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+</button>
+<div id="counter"></div>
+
+<script>
+  const stage = document.getElementById('stage');
+  const slides = [...document.querySelectorAll('.slide')];
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const counter = document.getElementById('counter');
+  let cur = 0;
+
+  function fit() {
+    const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = 'scale(' + s + ')';
+  }
+
+  function go(i) {
+    if (i < 0 || i >= slides.length || i === cur) return;
+    slides[cur].classList.remove('active');
+    cur = i;
+    slides[cur].classList.add('active');
+    update();
+  }
+
+  function update() {
+    prev.disabled = cur === 0;
+    next.disabled = cur === slides.length - 1;
+    counter.textContent = (cur + 1) + ' / ' + slides.length;
+  }
+
+  prev.addEventListener('click', () => go(cur - 1));
+  next.addEventListener('click', () => go(cur + 1));
+
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', 'ArrowDown', 'PageDown', ' ', 'Enter'].includes(e.key)) { e.preventDefault(); go(cur + 1); }
+    else if (['ArrowLeft', 'ArrowUp', 'PageUp', 'Backspace'].includes(e.key)) { e.preventDefault(); go(cur - 1); }
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(slides.length - 1);
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    }
+  });
+
+  // 터치 스와이프
+  let tx = null;
+  document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) go(cur + (dx < 0 ? 1 : -1));
+    tx = null;
+  });
+
+  window.addEventListener('resize', fit);
+  fit();
+  update();
+</script>
+</body>
+</html>
